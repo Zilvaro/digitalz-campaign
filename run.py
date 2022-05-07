@@ -66,7 +66,7 @@ def get_input_data():
     """
     # Input & check the report number
     report_number = int(input("Enter the report number here (1 to 3): "))
-    if report_number < 1 or report_number > 3: 
+    while report_number < 1 or report_number > 3: 
         report_number = int(input(
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 3: \n"
         ))
@@ -74,13 +74,13 @@ def get_input_data():
 
     # Input & check the period dates
     start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): "))
-    if start_date < 1 or start_date > 31:
+    while start_date < 1 or start_date > 31:
         start_date = int(input(
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 31:\n"
         ))
 
     end_date = int(input("\nEnter the NUMBER of end-day (1 to 31): "))
-    if (end_date <1 or end_date >31) or (start_date > end_date):
+    while (end_date <1 or end_date >31) or (start_date > end_date):
         end_date = int(input(
             f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"
         ))
