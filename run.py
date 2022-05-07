@@ -3,7 +3,7 @@
 import os
 import gspread
 from google.oauth2.service_account import Credentials
-import  datetime
+import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -59,19 +59,20 @@ def welcome():
 welcome()
 
 
-
 def get_input_data():
     """
     Get report & time selection input from the user.
     """
+    user_input = SHEET.worksheet('data-input')
+
     # Input & check the report number
     report_number = int(input("Enter the report number here (1 to 3): "))
     while report_number < 1 or report_number > 3: 
         report_number = int(input(
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 3: \n"
         ))
+    report_value = user_input.update ("A2", report_number)
     
-
     # Input & check the period dates
     start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): "))
     while start_date < 1 or start_date > 31:
@@ -79,11 +80,15 @@ def get_input_data():
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 31:\n"
         ))
 
+    start_value = user_input.update ("B2", start_date)
+
     end_date = int(input("\nEnter the NUMBER of end-day (1 to 31): "))
     while (end_date <1 or end_date >31) or (start_date > end_date):
         end_date = int(input(
             f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"
         ))
+
+    end_value = user_input.update ("C2", end_date)
 
     # Print the user selected options 
     if report_number == 1:
@@ -91,7 +96,7 @@ def get_input_data():
         print(f"\n\033[1;36m '{report1}' \033[1;37mfrom {start_date} to {end_date} of December")
     elif report_number == 2:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\n\033[1;36m '{report2}' \033[1;37mfrom {start_date} to {end_date} of December")   
+        print(f"\n\033[1;36m '{report2}' \033[1;37mfrom {start_date} to {end_date} of December")
     else:
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\n\033[1;36m '{report3}' \033[1;37mfrom {start_date} to {end_date} of December")
@@ -99,3 +104,11 @@ def get_input_data():
 
 get_input_data()
 
+"""
+def run_file:
+
+report_value = user_input.cell(2,1)
+    start_value = user_input.cell(2,2)
+    end_value = user_input.cell(2,3)
+    
+"""
