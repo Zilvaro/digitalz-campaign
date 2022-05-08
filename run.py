@@ -1,9 +1,10 @@
 """ All imports. """
 
 import os
+from datetime import datetime
 import gspread
 from google.oauth2.service_account import Credentials
-import datetime
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -27,12 +28,10 @@ def title():
 
 title()
 
-
 # Names & numbers of reports plus global variables
 REPORT1 = "Number of participants every day by region"
 REPORT2 = "Time of answering questions during the day"
 REPORT3 = "Answer by region to different type of questions"
-
 
 def welcome():
     # Welcome & explanation message
@@ -57,7 +56,6 @@ def welcome():
      
 
 welcome()
-
 
 def get_input_data():
     """
@@ -91,7 +89,6 @@ def get_input_data():
 
     user_input.update("C2", end_date)
 
-
     # Print the user selected options 
     if report_number == 1:
         print("\n\n\033[0;37mYou selected:\n")
@@ -103,14 +100,48 @@ def get_input_data():
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\n\033[1;36m '{REPORT3}' \033[1;37mfrom {start_date} to {end_date} of December")
 
-
 get_input_data()
 
-"""
-def run_file:
 
-report_value = user_input.cell(2,1)
-    start_value = user_input.cell(2,2)
-    end_value = user_input.cell(2,3)
+
+
+
+
+def calculate_participants():
+    data_sheet = SHEET.worksheet("win-campaign")
+    input_sheet = SHEET.worksheet("data-input")
     
-"""
+    report_no = input_sheet.get("A2")
+    start_day = input_sheet.get("B2")
+    end_day = input_sheet.get("C2")
+    
+    print(report_no)
+    print(start_day)
+    print(end_day)
+
+    data = data_sheet.get("A1:E17")
+    pprint(data)
+    print("\n")
+    print(data)
+
+    print("\n")
+    date = data_sheet.get("E3")
+    print(date)
+    print("\n")
+
+    
+    date = data[2][4]
+    
+    time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
+    print("Day = %s" % (time.day))
+    print("Hour = %s" % (time.hour))
+
+
+
+    number_business = 0
+    for i in range(len(data)):
+        if data[i][3] == "Business":
+            number_business += 1
+    print(number_business)
+
+calculate_participants()
