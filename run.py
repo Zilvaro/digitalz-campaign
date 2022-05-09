@@ -30,7 +30,7 @@ def title():
 title()
 
 # Names & numbers of reports plus global variables
-REPORT1 = "Number of participants every day by region"
+REPORT1 = "Number of participants every day"
 REPORT2 = "Time of answering questions during the day"
 REPORT3 = "Answer by region to different type of questions"
 
@@ -94,13 +94,13 @@ def get_input_data():
     # Print the user selected options
     if report_number == 1:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\n\033[1;36m '{REPORT1}' \033[1;37mfrom {start_date} to {end_date} of December")
+        print(f"\033[0;36m '{REPORT1}' \033[0;37mfrom {start_date} to {end_date} of December\n")
     elif report_number == 2:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\n\033[1;36m '{REPORT2}' \033[1;37mfrom {start_date} to {end_date} of December")
+        print(f"\033[0;36m '{REPORT2}' \033[0;37mfrom {start_date} to {end_date} of December\n")
     else:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\n\033[1;36m '{REPORT3}' \033[1;37mfrom {start_date} to {end_date} of December")
+        print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom {start_date} to {end_date} of December\n")
 
 get_input_data()
 
@@ -108,45 +108,28 @@ get_input_data()
 def make_reports():
     data_sheet = SHEET.worksheet("win-campaign")
     input_sheet = SHEET.worksheet("data-input")
-    
     data = data_sheet.get("A1:E17")
-    pprint(data)
-    print("\n")
-    print(data)
-    
+
     report_no = int(input_sheet.get("A2")[0][0])
     start_day = int(input_sheet.get("B2")[0][0])
     end_day = int(input_sheet.get("C2")[0][0])
-    
-    print(report_no)
-    print(start_day)
-    print(end_day)
-
-    
 
     def create_report1 ():
         report1 = {}
         for n in range(start_day, end_day+1, 1):
             report1[n] = 0
-        
+
         for d in range(1,len(data),1):
             date = data[d][4]
             time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
             days = int(time.day)
             if days >=start_day and days <= end_day:
                 report1[days] += 1
-            print(days)
-        pprint(report1)    
-    
+                            
+        for key,value in report1.items():
+	        print('\033[0;36m       December', key, ':\033[0;37m', value,' participants')
+   
     create_report1()
-
-
-
-    number_business = 0
-    for i in range(len(data)):
-        if data[i][3] == "Business":
-            number_business += 1
-    print(number_business)
 
 make_reports()
 
