@@ -108,9 +108,14 @@ get_input_data()
 
 
 
-def make_report():
+def make_reports():
     data_sheet = SHEET.worksheet("win-campaign")
     input_sheet = SHEET.worksheet("data-input")
+    
+    data = data_sheet.get("A1:E17")
+    pprint(data)
+    print("\n")
+    print(data)
     
     report_no = int(input_sheet.get("A2")[0][0])
     start_day = int(input_sheet.get("B2")[0][0])
@@ -120,23 +125,16 @@ def make_report():
     print(start_day)
     print(end_day)
 
-    data = data_sheet.get("A1:E17")
-    pprint(data)
-    print("\n")
-    print(data)
 
-    print("\n")
-    date = data_sheet.get("E3")
-    print(date)
-    print("\n")
+    def create_report1 ():
+        for d in range(1,len(data),1):
+            date = data[d][4]
+            time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
+            days = int(time.day)
+            print (days)
+            print("Hour = %s" % (time.hour))
 
-    
-    date = data[2][4]
-    
-    time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
-    print("Day = %s" % (time.day))
-    print("Hour = %s" % (time.hour))
-
+    create_report1()
 
 
     number_business = 0
@@ -145,4 +143,4 @@ def make_report():
             number_business += 1
     print(number_business)
 
-make_report()
+make_reports()
