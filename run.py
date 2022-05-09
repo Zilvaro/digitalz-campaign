@@ -65,6 +65,7 @@ def get_input_data():
 
     # Input, check the report number and update google sheet
     report_number = int(input("Enter the report number here (1 to 3): "))
+    print(report_number)
     while report_number < 1 or report_number > 3: 
         report_number = int(input(
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 3: \n"
@@ -107,13 +108,13 @@ get_input_data()
 
 
 
-def calculate_participants():
+def make_report():
     data_sheet = SHEET.worksheet("win-campaign")
     input_sheet = SHEET.worksheet("data-input")
     
-    report_no = input_sheet.get("A2")
-    start_day = input_sheet.get("B2")
-    end_day = input_sheet.get("C2")
+    report_no = int(input_sheet.get("A2")[0][0])
+    start_day = int(input_sheet.get("B2")[0][0])
+    end_day = int(input_sheet.get("C2")[0][0])
     
     print(report_no)
     print(start_day)
@@ -144,4 +145,4 @@ def calculate_participants():
             number_business += 1
     print(number_business)
 
-calculate_participants()
+make_report()
