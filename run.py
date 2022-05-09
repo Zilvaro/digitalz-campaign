@@ -6,6 +6,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from pprint import pprint
 
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -41,16 +42,17 @@ def welcome():
     print(" During December, every day we were sending to shops business"
           " or research tasks, e.g:")
     print("\033[0;34m    Business: \033[0;37m 'Show the availability of FROZEN NUGGETS'")
-    print("\033[0;34m    Research: \033[0;37m '% of sales increase due to this promo?'")
+    print("\033[0;34m    Research: \033[0;37m '% of sales increase due to this promo?'\n")
+    
+    print("\033[0;37m And we were observing their \033[4;37mAnswering Behavior\033[0;37m ")
     print("\n")
-    print("\033[0;37m  And we were observing their answering Behavior ")
-    print("\033[0;36m  Please, select the report and dates for the analysis:\n")
+    print("\033[0;36m    Please, select the report for the analysis:\n")
 
     print(f"\033[0;36m    # 1 :\033[0;37m  {REPORT1}")
     print(f"\033[0;36m    # 2 :\033[0;37m  {REPORT2}")
     print(f"\033[0;36m    # 3 :\033[0;37m  {REPORT3}\n")
 
-    print("\033[0;36m    Any period between 1st and 31st of the month : \033[0;37m  Dates for analysis\n")
+    print("\033[0;36m    And any period between 1st and 31st of the month : \033[0;37m  Dates for analysis\n")
     print("-".center(90, "-"))
     print("\n\n")
      
@@ -65,7 +67,6 @@ def get_input_data():
 
     # Input, check the report number and update google sheet
     report_number = int(input("Enter the report number here (1 to 3): "))
-    print(report_number)
     while report_number < 1 or report_number > 3: 
         report_number = int(input(
             "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 3: \n"
@@ -90,7 +91,7 @@ def get_input_data():
 
     user_input.update("C2", end_date)
 
-    # Print the user selected options 
+    # Print the user selected options
     if report_number == 1:
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\n\033[1;36m '{REPORT1}' \033[1;37mfrom {start_date} to {end_date} of December")
@@ -102,10 +103,6 @@ def get_input_data():
         print(f"\n\033[1;36m '{REPORT3}' \033[1;37mfrom {start_date} to {end_date} of December")
 
 get_input_data()
-
-
-
-
 
 
 def make_reports():
@@ -125,16 +122,24 @@ def make_reports():
     print(start_day)
     print(end_day)
 
+    
 
     def create_report1 ():
+        report1 = {}
+        for n in range(start_day, end_day+1, 1):
+            report1[n] = 0
+        
         for d in range(1,len(data),1):
             date = data[d][4]
             time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
             days = int(time.day)
-            print (days)
-            print("Hour = %s" % (time.hour))
-
+            if days >=start_day and days <= end_day:
+                report1[days] += 1
+            print(days)
+        pprint(report1)    
+    
     create_report1()
+
 
 
     number_business = 0
@@ -144,3 +149,4 @@ def make_reports():
     print(number_business)
 
 make_reports()
+
