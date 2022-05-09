@@ -115,6 +115,9 @@ def make_reports():
     end_day = int(input_sheet.get("C2")[0][0])
 
     def create_report1 ():
+        """
+        REPORT1 calculation & presentation
+        """
         report1 = {}
         for n in range(start_day, end_day+1, 1):
             report1[n] = 0
@@ -127,15 +130,16 @@ def make_reports():
                 report1[days] += 1
                             
         for key,value in report1.items():
-	        print('\033[0;36m       December', key, ':\033[0;37m', value,' participants')
+	        print('\033[0;36m       December', key, ':\033[0;37m', value,
+                ' participants')
 
-        report1_values = sorted(report1.items(), key=lambda y: y[1], reverse=True)
-        print('\n \033[0;36m Most active days were \033[0;37mDecember', report1_values[0][0], 
-            'with', report1_values[0][1],'\033[0;36m''and \033[0;37mDecember', report1_values[1][0], 'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
-
-        
-        
-   
+        report1_values = sorted(report1.items(), key=lambda y: y[1],
+                                reverse=True)
+        print('\n \033[0;36m Most active days were \033[0;37mDecember',
+                report1_values[0][0], 'with', report1_values[0][1],
+                '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
+                'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
+ 
     create_report1()
 
 make_reports()
