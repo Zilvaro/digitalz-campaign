@@ -112,6 +112,20 @@ def collect_input_data():
 
 collect_input_data()
 
+def another_report():
+    # After running a report user choses what to do next
+    
+    next_step = input("Do you want to run another report: Y / N    ")
+    print(next_step)
+    
+    if next_step == 'Y' or next_step == 'y':
+        os.system("cls" if os.name == "nt" else "clear")
+        print("-".center(90, "-"))
+        print("\n\n")
+        collect_input_data()
+    else:
+        print("\n\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
+        quit()
 
 def make_reports():
     """
@@ -178,17 +192,8 @@ def make_reports():
               "- \033[1;37m3 hours\033[0;37m before the most active time"
               " from @\033[0;37m", report2_values[0][0]-1, ':00\n\n')
 
-        next_step = int(input("Do you want to run another report: 1 for 'yes' / 2 for N    "))
-        print(next_step)
-    
-        if next_step == 1:
-            os.system("cls" if os.name == "nt" else "clear")
-            print("-".center(90, "-"))
-            print("\n\n")
-            collect_input_data()
-        else:
-            print("\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
-            quit()
+        another_report()
+        make_reports()
 
     def create_report3():
         """
@@ -261,20 +266,8 @@ def make_reports():
 make_reports()
 
 
-"""
-def another_report():
-    # After running a report user choses what to do next
-    
-    next_step = int(input("Do you want to run another report: 1 for 'yes' / 2 for N    "))
-    print(next_step)
-    
-    if next_step == 1:
-        os.system("cls" if os.name == "nt" else "clear")
-        print("-".center(90, "-"))
-        print("\n\n")
-        collect_input_data()
-    else:
-        print("\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
-        quit()
-    
-"""
+
+
+
+
+
