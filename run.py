@@ -177,6 +177,8 @@ def make_reports():
         report3r = {}
         report3e = {}
         
+        num_answ = len(data) - 1
+       
         area_list = ['North', 'Center', 'South']
         for n in area_list:
             report3b[n] = 0
@@ -193,20 +195,49 @@ def make_reports():
                 if type == 'Business':
                     report3b[area] += 1
                 elif type == 'Research':
-                    report3r[area] +=1
+                    report3r[area] += 1
                 else:
                     report3e[area] +=1
-                            
+
+        val_b = sum(report3b.values())
+        val_r = sum(report3r.values())
+        val_e = sum(report3e.values())
+        
+        perc_b = (val_b / num_answ) * 100
+        perc_r = (val_r / num_answ) * 100
+        perc_e = (val_e / num_answ) * 100
+
+        print('\n')
+        print(" In selected period ", end="")
+        print(f'there were \033[0;36m{num_answ} \033[0;37mtotal answers')
+        print('\n')
+
+        print("\033[4;37m", end="")
+        print(f'BUSINESS:\033[0;36m {val_b} \033[0;37m answers: \n')
         print(report3b)
+        print(f'or \033[0;36m{perc_b}% \033[0;37m from total responses')
+        print('\n')  
+
+        print("\033[4;37m", end="")
+        print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers: \n')
         print(report3r)
+        print(f'or \033[0;36m{perc_r}% \033[0;37m from total responses')
+        print('\n')
+
+        print("\033[4;37m", end="")
+        print(f'ENTERTAINMENT:\033[0;36m {val_e} \033[0;37m answers: \n')
         pprint(report3e)
+        print(f'or \033[0;36m{perc_e}% \033[0;37m from total responses')
+        print('\n\n')
 
 
     if report_no == 1:
         create_report1()
-    elif report_no ==2:
+    elif report_no == 2:
         create_report2()
     else:
         create_report3()
 
 make_reports()
+
+
