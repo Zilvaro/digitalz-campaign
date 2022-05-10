@@ -164,9 +164,43 @@ def make_reports():
 
         report2_values = sorted(report2.items(), key=lambda y: y[1],
                                 reverse=True)
-        print('\n\033[0;36m Recommendation: \033[0;37mSend your tasks around\033[4;37m',
-            report2_values[0][0]-2, "o'clock\033[0;37m - \033[1;37m2 hours\033[0;37m before the most active time from @\033[0;37m",
-            report2_values[0][0]-1, ':00\n\n')
+        print('\n\033[0;36m Recommendation: \033[0;37mSend your tasks '
+              'around\033[4;37m', report2_values[0][0]-4, "o'clock\033[0;37m "
+              "- \033[1;37m3 hours\033[0;37m before the most active time"
+              " from @\033[0;37m", report2_values[0][0]-1, ':00\n\n')
+
+    def create_report3():
+        """
+        REPORT3 calculation & presentation
+        """
+        report3b = {}
+        report3r = {}
+        report3e = {}
+        
+        area_list = ['North', 'Center', 'South']
+        for n in area_list:
+            report3b[n] = 0
+            report3r[n] = 0
+            report3e[n] = 0
+
+        for d in range(1, len(data), 1):
+            date = data[d][4]
+            time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
+            days = int(time.day)
+            area = data[d][1]
+            type = data[d][3]
+            if days >= start_day and days <= end_day:
+                if type == 'Business':
+                    report3b[area] += 1
+                elif type == 'Research':
+                    report3r[area] +=1
+                else:
+                    report3e[area] +=1
+                            
+        print(report3b)
+        print(report3r)
+        pprint(report3e)
+
 
     if report_no == 1:
         create_report1()
