@@ -76,11 +76,14 @@ def collect_input_data():
     user_input = SHEET.worksheet('data-input')
 
     # Input, check the report number and update google sheet
-    report_number = int(input("Enter the report number here (1 to 3): "))
-    while report_number < 1 or report_number > 3:
-        report_number = int(input(
+    report_number = input("Enter the report number here (1 to 3): ")
+    #while report_number < 1 or report_number > 3:
+    while report_number not in ['1', '2', '3']:
+        report_number = input(
             "\n\033[1;31mInvalid input, Please type a number "
-            "between \033[0;37m1 & 3: \n"))
+            "between \033[0;37m1 & 3: \n")
+
+    report_number = int(report_number)
 
     user_input.update("A2", report_number)
     # Input, check the period dates & update the google sheet
@@ -124,6 +127,7 @@ def another_report():
     print('\n\n')
 
     if next_step == 'Y' or next_step == 'y':
+    #if next_step in ['Y', 'y']:
         os.system("cls" if os.name == "nt" else "clear")
         print("-".center(90, "-"))
         print("\n\n")
@@ -248,7 +252,9 @@ def make_reports():
 
         print("\033[4;37m", end="")
         print(f'BUSINESS:\033[0;36m {val_b} \033[0;37m answers: \n')
-        print(report3b)
+        #print(report3b)
+        for area in report3b:
+            print(f'{area}: {report3b[area]}')
         print(f'or \033[0;36m{perc_b}% \033[0;37m from total responses')
         print('\n')
 
