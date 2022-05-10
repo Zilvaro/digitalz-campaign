@@ -110,14 +110,19 @@ def collect_input_data():
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom {start_date} to {end_date} of December\n")
 
+
 collect_input_data()
 
+
 def another_report():
-    # After running a report user choses what to do next
-    
-    next_step = input("Do you want to run another report: Y / N    ")
-    print(next_step)
-    
+    """
+    After running a report user choses what to do next
+    """
+
+    print('\033[0;37m')
+    next_step = input("Another report? Press \033[4;32mY\033[0;37m :  ")
+    print('\n\n')
+
     if next_step == 'Y' or next_step == 'y':
         os.system("cls" if os.name == "nt" else "clear")
         print("-".center(90, "-"))
@@ -126,6 +131,7 @@ def another_report():
     else:
         print("\n\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
         quit()
+
 
 def make_reports():
     """
@@ -165,6 +171,9 @@ def make_reports():
               '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
               'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
 
+        another_report()
+        make_reports()
+
     def create_report2():
         """
         REPORT2 calculation & presentation
@@ -203,7 +212,7 @@ def make_reports():
         report3r = {}
         report3e = {}
         num_answ = 0
-        
+
         area_list = ['North', 'Center', 'South']
         for name in area_list:
             report3b[name] = 0
@@ -255,6 +264,9 @@ def make_reports():
         print(f'or \033[0;36m{perc_e}% \033[0;37m from total responses')
         print('\n\n')
 
+        another_report()
+        make_reports()
+
     if report_no == 1:
         create_report1()
     elif report_no == 2:
@@ -264,10 +276,3 @@ def make_reports():
 
 
 make_reports()
-
-
-
-
-
-
-
