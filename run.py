@@ -110,7 +110,6 @@ def collect_input_data():
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom {start_date} to {end_date} of December\n")
 
-
 collect_input_data()
 
 
@@ -179,6 +178,18 @@ def make_reports():
               "- \033[1;37m3 hours\033[0;37m before the most active time"
               " from @\033[0;37m", report2_values[0][0]-1, ':00\n\n')
 
+        next_step = int(input("Do you want to run another report: 1 for 'yes' / 2 for N    "))
+        print(next_step)
+    
+        if next_step == 1:
+            os.system("cls" if os.name == "nt" else "clear")
+            print("-".center(90, "-"))
+            print("\n\n")
+            collect_input_data()
+        else:
+            print("\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
+            quit()
+
     def create_report3():
         """
         REPORT3 calculation & presentation
@@ -186,9 +197,8 @@ def make_reports():
         report3b = {}
         report3r = {}
         report3e = {}
-
-        num_answ = len(data) - 1
-
+        num_answ = 0
+        
         area_list = ['North', 'Center', 'South']
         for name in area_list:
             report3b[name] = 0
@@ -202,6 +212,7 @@ def make_reports():
             area = data[cell][1]
             task_type = data[cell][3]
             if days >= start_day and days <= end_day:
+                num_answ += 1
                 if task_type == 'Business':
                     report3b[area] += 1
                 elif task_type == 'Research':
@@ -212,9 +223,9 @@ def make_reports():
         val_b = sum(report3b.values())
         val_r = sum(report3r.values())
         val_e = sum(report3e.values())
-        perc_b = (val_b / num_answ) * 100
-        perc_r = (val_r / num_answ) * 100
-        perc_e = (val_e / num_answ) * 100
+        perc_b = round(((val_b / num_answ) * 100), 1)
+        perc_r = round(((val_r / num_answ) * 100), 1)
+        perc_e = round(((val_e / num_answ) * 100), 1)
 
         print('\n')
         print(" In selected period ", end="")
@@ -248,3 +259,22 @@ def make_reports():
 
 
 make_reports()
+
+
+"""
+def another_report():
+    # After running a report user choses what to do next
+    
+    next_step = int(input("Do you want to run another report: 1 for 'yes' / 2 for N    "))
+    print(next_step)
+    
+    if next_step == 1:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("-".center(90, "-"))
+        print("\n\n")
+        collect_input_data()
+    else:
+        print("\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
+        quit()
+    
+"""
