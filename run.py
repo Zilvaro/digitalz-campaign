@@ -2,9 +2,9 @@
 
 import os
 from datetime import datetime
-import gspread
-from google.oauth2.service_account import Credentials
 from pprint import pprint
+from google.oauth2.service_account import Credentials
+import gspread
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,6 +17,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('datasheet-python-campaign')
 
+
 def title():
     """
     Clear terminal & Print title
@@ -25,14 +26,16 @@ def title():
     os.system("cls" if os.name == "nt" else "clear")
     print("\033[1;36m")
     print("  WINTER-CAMPAIGN SUMMARY  ".center(90, "-"))
-        
+
 
 title()
+
 
 # Names & numbers of reports plus global variables
 REPORT1 = "Number of participants every day"
 REPORT2 = "Time of answering questions during the day"
 REPORT3 = "Answer by region to different type of questions"
+
 
 def welcome():
     """
@@ -40,12 +43,14 @@ def welcome():
     """
 
     print("\033[0;37m")
-    print(" Welcome to data and insights of our last Christmas campaign!\n\n".center(90,))
+    print(" Welcome to data and insights of our last Christmas "
+          "campaign!\n\n".center(90,))
     print(" During December, every day we were sending to shops business"
           " or research tasks, e.g:")
-    print("\033[0;34m    Business: \033[0;37m 'Show the availability of FROZEN NUGGETS'")
-    print("\033[0;34m    Research: \033[0;37m '% of sales increase due to this promo?'\n")
-    
+    print("\033[0;34m    Business: \033[0;37m 'Show the availability of "
+          "FROZEN NUGGETS'")
+    print("\033[0;34m    Research: \033[0;37m '% of sales increase due "
+          "to this promo?'\n")
     print("\033[0;37m And we were observing their \033[4;37mAnswering"
           " Behavior\033[0;37m ")
     print("\n")
@@ -60,7 +65,9 @@ def welcome():
     print("-".center(90, "-"))
     print("\n\n")
 
+
 welcome()
+
 
 def collect_input_data():
     """
@@ -70,27 +77,25 @@ def collect_input_data():
 
     # Input, check the report number and update google sheet
     report_number = int(input("Enter the report number here (1 to 3): "))
-    while report_number < 1 or report_number > 3: 
+    while report_number < 1 or report_number > 3:
         report_number = int(input(
-            "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 3: \n"
-        ))
+            "\n\033[1;31mInvalid input, Please type a number "
+            "between \033[0;37m1 & 3: \n"))
 
     user_input.update("A2", report_number)
-    
     # Input, check the period dates & update the google sheet
+
     start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): "))
     while start_date < 1 or start_date > 31:
         start_date = int(input(
-            "\n\033[1;31mInvalid input, Please type a number between \033[0;37m1 & 31:\n"
-        ))
+            "\n\033[1;31mInvalid input, Please type a number "
+            "between \033[0;37m1 & 31:\n"))
 
     user_input.update("B2", start_date)
 
-    end_date = int(input(f"\nEnter the NUMBER of end-day ({start_date} to 31): "))
+    end_date = int(input(f'\nEnter the NUMBER of end-day ({start_date} to 31): '))
     while (end_date < 1 or end_date > 31) or (start_date > end_date):
-        end_date = int(input(
-            f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"
-        ))
+        end_date = int(input(f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"))
 
     user_input.update("C2", end_date)
 
@@ -105,12 +110,17 @@ def collect_input_data():
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom {start_date} to {end_date} of December\n")
 
+
 collect_input_data()
 
+
 def make_reports():
-    data_sheet = SHEET.worksheet("win-campaign")
+    """
+    Method that creates reports from database
+    """
+    data_sheet = SHEET.worksheet("winter-campaign")
     input_sheet = SHEET.worksheet("data-input")
-    data = data_sheet.get("A1:E17")
+    data = data_sheet.get("A1:E2624")
 
     report_no = int(input_sheet.get("A2")[0][0])
     start_day = int(input_sheet.get("B2")[0][0])
@@ -121,16 +131,16 @@ def make_reports():
         REPORT1 calculation & presentation
         """
         report1 = {}
-        for n in range(start_day, end_day+1, 1):
-            report1[n] = 0
+        for period in range(start_day, end_day+1, 1):
+            report1[period] = 0
 
-        for d in range(1, len(data), 1):
-            date = data[d][4]
+        for cells in range(1, len(data), 1):
+            date = data[cells][4]
             time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
             days = int(time.day)
             if days >= start_day and days <= end_day:
                 report1[days] += 1
-                            
+
         for key, value in report1.items():
             print('\033[0;36m       December', key, ':\033[0;37m', value,
                   ' participants')
@@ -138,20 +148,20 @@ def make_reports():
         report1_values = sorted(report1.items(), key=lambda y: y[1],
                                 reverse=True)
         print('\n \033[0;36m Most active days were \033[0;37mDecember',
-                report1_values[0][0], 'with', report1_values[0][1],
-                '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
-                'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
-    
+              report1_values[0][0], 'with', report1_values[0][1],
+              '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
+              'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
+
     def create_report2():
         """
         REPORT2 calculation & presentation
         """
         report2 = {}
-        for n in range(1, 25, 1):
-            report2[n] = 0
+        for period in range(1, 25, 1):
+            report2[period] = 0
 
-        for d in range(1, len(data), 1):
-            date = data[d][4]
+        for cells in range(1, len(data), 1):
+            date = data[cells][4]
             time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
             days = int(time.day)
             hour = int(time.hour)
@@ -176,33 +186,32 @@ def make_reports():
         report3b = {}
         report3r = {}
         report3e = {}
-        
-        num_answ = len(data) - 1
-       
-        area_list = ['North', 'Center', 'South']
-        for n in area_list:
-            report3b[n] = 0
-            report3r[n] = 0
-            report3e[n] = 0
 
-        for d in range(1, len(data), 1):
-            date = data[d][4]
+        num_answ = len(data) - 1
+
+        area_list = ['North', 'Center', 'South']
+        for name in area_list:
+            report3b[name] = 0
+            report3r[name] = 0
+            report3e[name] = 0
+
+        for cell in range(1, len(data), 1):
+            date = data[cell][4]
             time = datetime.strptime(date, "%d.%m.%Y %H:%M:%S")
             days = int(time.day)
-            area = data[d][1]
-            type = data[d][3]
+            area = data[cell][1]
+            task_type = data[cell][3]
             if days >= start_day and days <= end_day:
-                if type == 'Business':
+                if task_type == 'Business':
                     report3b[area] += 1
-                elif type == 'Research':
+                elif task_type == 'Research':
                     report3r[area] += 1
                 else:
-                    report3e[area] +=1
+                    report3e[area] += 1
 
         val_b = sum(report3b.values())
         val_r = sum(report3r.values())
         val_e = sum(report3e.values())
-        
         perc_b = (val_b / num_answ) * 100
         perc_r = (val_r / num_answ) * 100
         perc_e = (val_e / num_answ) * 100
@@ -216,7 +225,7 @@ def make_reports():
         print(f'BUSINESS:\033[0;36m {val_b} \033[0;37m answers: \n')
         print(report3b)
         print(f'or \033[0;36m{perc_b}% \033[0;37m from total responses')
-        print('\n')  
+        print('\n')
 
         print("\033[4;37m", end="")
         print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers: \n')
@@ -230,7 +239,6 @@ def make_reports():
         print(f'or \033[0;36m{perc_e}% \033[0;37m from total responses')
         print('\n\n')
 
-
     if report_no == 1:
         create_report1()
     elif report_no == 2:
@@ -238,6 +246,5 @@ def make_reports():
     else:
         create_report3()
 
+
 make_reports()
-
-
