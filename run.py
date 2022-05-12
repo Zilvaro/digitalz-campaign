@@ -2,7 +2,6 @@
 
 import os
 from datetime import datetime
-from pprint import pprint
 from google.oauth2.service_account import Credentials
 import gspread
 
@@ -76,7 +75,7 @@ def collect_input_data():
     user_input = SHEET.worksheet('data-input')
 
     # Input, check the report number and update google sheet
-    report_number = input("Enter the report number here (1 to 3): ")
+    report_number = input("Enter the report number here (1 to 3): \n")
     #while report_number < 1 or report_number > 3:
     while report_number not in ['1', '2', '3']:
         report_number = input(
@@ -88,7 +87,7 @@ def collect_input_data():
     user_input.update("A2", report_number)
     # Input, check the period dates & update the google sheet
 
-    start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): "))
+    start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): \n"))
     while start_date < 1 or start_date > 31:
         start_date = int(input(
             "\n\033[1;31mInvalid input, Please type a number "
@@ -96,7 +95,7 @@ def collect_input_data():
 
     user_input.update("B2", start_date)
 
-    end_date = int(input(f'\nEnter the NUMBER of end-day ({start_date} to 31): '))
+    end_date = int(input(f'\nEnter the NUMBER of end-day ({start_date} to 31): \n'))
     while (end_date < 1 or end_date > 31) or (start_date > end_date):
         end_date = int(input(f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"))
 
@@ -123,7 +122,7 @@ def another_report():
     """
 
     print('\033[0;37m')
-    next_step = input("Another report? Press \033[4;32mY\033[0;37m :  ")
+    next_step = input("Another report? Press \033[4;32mY\033[0;37m :  \n")
     print('\n\n')
 
     if next_step == 'Y' or next_step == 'y':
@@ -266,7 +265,7 @@ def make_reports():
 
         print("\033[4;37m", end="")
         print(f'ENTERTAINMENT:\033[0;36m {val_e} \033[0;37m answers: \n')
-        pprint(report3e)
+        print(report3e)
         print(f'or \033[0;36m{perc_e}% \033[0;37m from total responses')
         print('\n\n')
 
