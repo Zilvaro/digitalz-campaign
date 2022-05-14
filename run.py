@@ -257,14 +257,14 @@ def make_reports():
         print('\n')
 
         print("\033[4;37m", end="")
-        print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers: \n')
+        print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers:n')
         print(f'     or \033[0;36m{perc_r}% \033[0;37m from total responses\n')
         for area in report3r:
             print(f'     {area}: {report3r[area]}')
         print('\n')
 
         print("\033[4;37m", end="")
-        print(f'ENTERTAINMENT:\033[0;36m {val_e} \033[0;37m answers: \n')
+        print(f'ENTERTAINMENT:\033[0;36m {val_e} \033[0;37m answers:')
         print(f'     or \033[0;36m{perc_e}% \033[0;37m from total responses\n')
         for area in report3b:
             print(f'     {area}: {report3e[area]}')
