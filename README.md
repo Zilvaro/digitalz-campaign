@@ -4,17 +4,19 @@
 # Welcome!
 
 
-This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2020 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day durunf December month and the specific focus was on the understanding of the users' behavior:
-  - when, during the month users are most active
+This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2020 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day during December month and a specific focus was on the understanding of the users' behavior:
+  - when, during the month users usally are the most active
   - when, during the day, they have the time available and willingness to respond to the tasks. That would indicate to the company when to dispach new tasks
   - is there a corelation between task-types, geographical areas and the response rate
 
-Since the solution uses external GoogleSheets location to store the data and capture inputs for analysis, it can be used 'as-is' for the data sets of other months as well as produce other related reports with a minimal change in output parameters.
+For more practical benefits to the user, each reports includes an actionable summary or insight sentence generated using the data.
+
+Since the solution uses external GoogleSheets location to store the data and capture inputs for analysis, it can be already used 'as-is' for the data sets, imported to excel, of other months as well as to produce other related reports with a minimal change in output parameters.
 
 
-The working version of the Tasking Module mobile-web pages can be found [here](https://digitalz-research.herokuapp.com/).
+The working version of the Campaign Reporting Module mobile-web pages can be found [here](https://git.heroku.com/digitalz-research.git).
 
-![website preview](/images/am-i-responsive.JPG)
+![website preview](/images/am-i-responsive.jpg)
 
 
 
@@ -59,7 +61,7 @@ The working version of the Tasking Module mobile-web pages can be found [here](h
 
 <a name="ux"></a> 
 
-# 1. Module Structure (flow)
+# 1. Objectives (flow)
 [Go to the top](#table-of-contents)
 
 ![flow chart](/images/digitalz-reports-flowchart.png)
@@ -81,9 +83,9 @@ The screen-max-width is set for 1100px to keep all the items in proportion. To k
 ## 1.2 Users
 [Go to the top](#table-of-contents)
 
-**Juan** : 22 years old active student who volunteers in different events, tries to learn new things by taking internships at multinational companies. In addition to his Facebook and Instagram accounts he would like to have an application where he can run continuous crowdfunding activities to support his studies.  
+**Emily** : 24 years old marketing executive responsable for the remote sales and marketing campaign. One of her objectives is to maximize the active participation of the program users and collect significant information for brand managers.
 
-**Lilly** : 39 years old office employee that is passionate about sustainability, nice looking brands and living environment and is willing to help other people to create something fun and useful things. From time to time she is participating in different contests or opinion surveys organized by brands and communities.
+**Grace** : 39 years old Sales Strategy director who is overseeing marketing spend and wants to push sales via business tasks, but at the same maintain program fun and interesting to the retail with mixing-in the educational tasks.
 
 
 <a name="color-scheme"></a>
