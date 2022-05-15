@@ -115,15 +115,15 @@ def collect_input_data():
     if report_number == 1:
         print("\n\n\033[0;37mYou selected:\n")
         print(f"\033[0;36m '{REPORT1}' \033[0;37m")
-        print(f"from {start_date} to {end_date} of December\n")
+        print(f" from {start_date} to {end_date} of December\n")
     elif report_number == 2:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\033[0;36m '{REPORT2}' \033[0;37mfrom")
-        print(f"{start_date} to {end_date} of December\n")
+        print(f"\033[0;36m '{REPORT2}' \033[0;37m")
+        print(f" from {start_date} to {end_date} of December\n")
     else:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom")
-        print(f"{start_date} to {end_date} of December\n")
+        print(f"\033[0;36m '{REPORT3}' \033[0;37m")
+        print(f" from {start_date} to {end_date} of December\n")
 
 
 collect_input_data()
