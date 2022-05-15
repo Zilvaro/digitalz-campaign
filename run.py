@@ -61,7 +61,7 @@ def welcome():
 
     print("\033[0;36m    And any period between 1st and 31st of the month"
           " : \033[0;37m  Dates for analysis\n")
-    print("-".center(90, "-"))
+    print("-".center(78, "-"))
     print("\n\n")
 
 
@@ -76,7 +76,6 @@ def collect_input_data():
 
     # Input, check the report number and update google sheet
     report_number = input("Enter the report number here (1 to 3): \n")
-    #while report_number < 1 or report_number > 3:
     while report_number not in ['1', '2', '3']:
         report_number = input(
             "\n\033[1;31mInvalid input, Please type a number "
@@ -85,32 +84,46 @@ def collect_input_data():
     report_number = int(report_number)
 
     user_input.update("A2", report_number)
+
     # Input, check the period dates & update the google sheet
 
-    start_date = int(input("\nEnter the NUMBER of start-day (1 to 31): \n"))
-    while start_date < 1 or start_date > 31:
-        start_date = int(input(
+    start_string = []
+    start_range_int = list(range(1, 32))
+    start_string = [str(x) for x in start_range_int]
+
+    start_date = input("\nEnter the NUMBER of start-day (1 to 31): \n")
+    while start_date not in start_string:
+        start_date = input(
             "\n\033[1;31mInvalid input, Please type a number "
-            "between \033[0;37m1 & 31:\n"))
+            "between \033[0;37m1 & 31:\n")
 
     user_input.update("B2", start_date)
 
-    end_date = int(input(f'\nEnter the NUMBER of end-day ({start_date} to 31): \n'))
-    while (end_date < 1 or end_date > 31) or (start_date > end_date):
-        end_date = int(input(f"\n\033[1;31mInvalid input, Please type a number between \033[0;37m{start_date} and 31:\n"))
+    end_string = []
+    end_range_int = list(range(int(start_date), 32))
+    for element in end_range_int:
+        end_string.append(str(element))
+
+    end_date = input(f'\nEnter the NUMBER of end-day ({start_date} to 31):\n')
+    while end_date not in end_string:
+        print("\n\033[1;31mInvalid input. Enter a number between:")
+        end_date = input(f"\033[0;37m{start_date} and 31\n")
 
     user_input.update("C2", end_date)
 
     # Print the user selected options
     if report_number == 1:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\033[0;36m '{REPORT1}' \033[0;37mfrom {start_date} to {end_date} of December\n")
+        print(f"\033[0;36m '{REPORT1}' \033[0;37m")
+        print(f"from {start_date} to {end_date} of December\n")
     elif report_number == 2:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\033[0;36m '{REPORT2}' \033[0;37mfrom {start_date} to {end_date} of December\n")
+        print(f"\033[0;36m '{REPORT2}' \033[0;37mfrom")
+        print(f"{start_date} to {end_date} of December\n")
     else:
         print("\n\n\033[0;37mYou selected:\n")
-        print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom {start_date} to {end_date} of December\n")
+        print(f"\033[0;36m '{REPORT3}' \033[0;37mfrom")
+        print(f"{start_date} to {end_date} of December\n")
 
 
 collect_input_data()
@@ -125,14 +138,14 @@ def another_report():
     next_step = input("Another report? Press \033[4;32mY\033[0;37m :  \n")
     print('\n\n')
 
-    if next_step == 'Y' or next_step == 'y':
-    #if next_step in ['Y', 'y']:
+    if next_step in ['Y', 'y']:
         os.system("cls" if os.name == "nt" else "clear")
         print("-".center(90, "-"))
         print("\n\n")
         collect_input_data()
     else:
-        print("\n\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n\n".center(90,))
+        print("\n\033[1;32mGOOD LUCK! SEE U NEXT TIME!\n\n".center(78,))
+        print("\033[0;37m or RUN PROGRAM again...")
         quit()
 
 
@@ -266,7 +279,7 @@ def make_reports():
         print("\033[4;37m", end="")
         print(f'ENTERTAINMENT:\033[0;36m {val_e} \033[0;37m answers:')
         print(f'     or \033[0;36m{perc_e}% \033[0;37m from total responses\n')
-        for area in report3b:
+        for area in report3e:
             print(f'     {area}: {report3e[area]}')
         print('\n\n')
 
