@@ -24,7 +24,7 @@ def title():
 
     os.system("cls" if os.name == "nt" else "clear")
     print("\033[1;36m")
-    print("  WINTER-CAMPAIGN SUMMARY  ".center(90, "-"))
+    print("  WINTER-CAMPAIGN SUMMARY  ".center(78, "-"))
 
 
 title()
@@ -43,7 +43,7 @@ def welcome():
 
     print("\033[0;37m")
     print(" Welcome to data and insights of our last Christmas "
-          "campaign!\n\n".center(90,))
+          "campaign!\n\n".center(78,))
     print(" During December, every day we were sending to shops business"
           " or research tasks, e.g:")
     print("\033[0;34m    Business: \033[0;37m 'Show the availability of "
