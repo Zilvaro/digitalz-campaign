@@ -24,8 +24,8 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 
 # Table of Contents
 
-[1. User Experience (UX) & Interface (UI)](#ux)
-  - [1.1 General Rules](#general-rules)
+[1. General structure (flow)](#ux)
+  - [1.1 Objectives](#objectives)
   - [1.2 Personas](#personas)
   -	[1.3 Color Scheme](#color-scheme)
   - [1.4 Structure (Flow)](#wire-flow)
@@ -61,19 +61,21 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 
 <a name="ux"></a> 
 
-# 1. Objectives (flow)
+# 1. General structure (flow)
 [Go to the top](#table-of-contents)
 
 ![flow chart](/images/digitalz-reports-flowchart.png)
 
-<a name="general-rules"></a>
-## 1.1 Flow chart
+<a name="objectives"></a>
+## 1.1 Objectives
 [Go to the top](#table-of-contents)
 
-While designing the functionality & user experience there were applied some guiding principles:
-- 5-seconds rule: it has to be clear what the page is for in 5s (e.g. is it just for information, to sign-in or to perform an activity) and where to go next.
-- forward-flow rule: even though a possibility to go back (to home page) exists, user shall move forward from every page. This is important to maintain user’s focus and interest, also to increase app’s usability by lowering # of clicks.
-- consistency: every page has the same color scheme, similar structure, button design and follows a common practice of app design (OK buttons - green, main page - home, etc.).
+- Allow users to explore relevant participants' answering behavior for for different time intervals during the promo-month. 
+  - This was achieved via the selection of a report and setting the start & end-date of the analysis
+- Provide some insight form the data in generated repors, so the user doesn't neet to go through multiple lines to find (for example) what are the most active hours in a day and what to do with such info in practice.
+  - This was achieved through adding an extra code that looks for specific data, sorts the results and, later, constructs the line of texts indicating the findings/suggestions.
+- The module runs in a smooth loop to allow the user without re-starting the application to keep exploring different reports and insights.
+  - This was achieved by asking (validated) question whether the user would like to continue with another report or he wants to quit for now.
 
 The screen-max-width is set for 1100px to keep all the items in proportion. To keep all elements visually complete and related to each other, a light background was added that is always responsive to full screen size (not only up to 1100px).
 
@@ -92,51 +94,12 @@ The screen-max-width is set for 1100px to keep all the items in proportion. To k
 ## 1.3 Color Scheme
 [Go to the top](#table-of-contents)
 
-The idea of the solution is that ad-banners, product pictures or story-images will be very colorful, therefore core color scheme was chosen to be calm, cool, but not cold.
+For the color scheme, the idea was to keep clean-white texts with highlighting some important points and drawing attention to errors or wrong inputs.
 
-With the help of https://www.color-hex.com/color-palettes/ DigitalZ has the color combination that guaranties sufficient contrast, readability and enough supporting colors to be engaging:
-
-![color scheme](/assets/readme-assets/color-scheme.jpg)
-
-Font-family is a standard one, that looks great on multiple browsers: **'Segoe UI', sans-serif**.
-
-
-<a name="wire-flow"></a>
-## 1.4 Structure (Flow)
-[Go to the top](#table-of-contents)
-
-
-<a name="wireframes"></a>
-### Wireframes
-[Go to the top](#table-of-contents)
-
-To visualize the ideas and define the priorities for the development BALSAMIQ tool was used. At first, larger (not full) site architecture was created, then prioritized what would be possible to do in a given timeframe, but already be a functional site and give a solid structure for the next upgrades.
-
-The concept pages:
-
-<a name="wire-home"></a>
-### Home-page
-[Go to the top](#table-of-contents)
-
-![home balsamiq page](/assets/readme-assets/home-page-mobile-s.webp)
-![home-signed balsamiq page](/assets/readme-assets/home-page-mobile-signed-s.webp)
-![home-exit balsamiq page](/assets/readme-assets/home-page-mobile-exit-s.webp)
-
-
-<a name="wire-tasks"></a>
-### Tasks
-[Go to the top](#table-of-contents)
-
-![balsamiq guinness-task](/assets/readme-assets/home-page-task1-s.webp)
-![balsamiq vitamins-task](/assets/readme-assets/home-page-task2-s.webp)
-
-
-<a name="wire-charts"></a>
-### Insights
-[Go to the top](#table-of-contents)
-
-![balsamiq charts](/assets/readme-assets/home-page-results-s.webp)
-
+  - General text, White-normal [\033[0;37m\]. 
+  - Descriptive highlight, Blue [\033[1;34m\], used in Welcome/Overview section to highlight available report types. 
+  - Report highlight, Cyan [\033[1;36m\], used to draw attention to important elements in the analysis
+  - Wrong input, Red [\033[1;31m\], for indicationg the Error in process where the user has to take another action. 
 
 
 
