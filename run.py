@@ -182,10 +182,16 @@ def make_reports():
 
         report1_values = sorted(report1.items(), key=lambda y: y[1],
                                 reverse=True)
-        print('\n\033[0;36mMost active days were \033[0;37mDecember',
-              report1_values[0][0], 'with', report1_values[0][1],
-              '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
-              'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
+        length = int(len(report1.keys()))
+        if length == 1:
+            print('\n On\033[0;36m December', report1_values[0][0],
+                  '\033[0;37mthere were\033[0;36m', report1_values[0][1],
+                  '\033[0;37mactive participants\n\n')
+        else:
+            print('\n\033[0;36mMost active days were \033[0;37mDecember',
+                  report1_values[0][0], 'with', report1_values[0][1],
+                  '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
+                  'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
 
         another_report()
         make_reports()
@@ -270,7 +276,7 @@ def make_reports():
         print('\n')
 
         print("\033[4;37m", end="")
-        print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers:n')
+        print(f'RESEARCH:\033[0;36m {val_r} \033[0;37m answers:')
         print(f'     or \033[0;36m{perc_r}% \033[0;37m from total responses\n')
         for area in report3r:
             print(f'     {area}: {report3r[area]}')
