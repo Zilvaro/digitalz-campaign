@@ -28,18 +28,19 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
   - [1.1 Objectives](#objectives)
   - [1.2 Personas](#personas)
   -	[1.3 Color Scheme](#color-scheme)
-  - [1.4 Structure (Flow)](#wire-flow)
-    - [Wireframes](#wireframes)
-    - [Home-page](#wire-home)
-    - [Tasks](#wire-tasks)
-    - [Insights](#wire-charts)
 
       
 [2. Features](#features)
-  - [2.1 Sign-in & task activation](#sign-in)
-  - [2.2 Tasks](#tasks)
-  -	[2.3 Charts](#charts)
-  - [2.4 Features-to-come (list is not complete)](#future-features)
+  - [2.1 Welcome & overview](#welcome)
+  - [2.2 Report # input](#tasks)
+  -	[2.3 Start-date input](#charts)
+  - [2.4 End-date input & validation)](#future-features)
+  - [2.4 Data storage)](#future-features)
+  - [2.4 End-date input)](#future-features)
+  - [2.4 End-date input)](#future-features)
+  - [2.4 End-date input)](#future-features)
+  - [2.4 End-date input)](#future-features)
+  - [2.4 End-date input)](#future-features)
 
 
 [3.Technologies used](#technologies-used)
@@ -70,14 +71,13 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 ## 1.1 Objectives
 [Go to the top](#table-of-contents)
 
-- Allow users to explore relevant participants' answering behavior for for different time intervals during the promo-month. 
+- Allow users to explore participants' answering behavior for for different time intervals during the promo-month. 
   - This was achieved via the selection of a report and setting the start & end-date of the analysis
-- Provide some insight form the data in generated repors, so the user doesn't neet to go through multiple lines to find (for example) what are the most active hours in a day and what to do with such info in practice.
-  - This was achieved through adding an extra code that looks for specific data, sorts the results and, later, constructs the line of texts indicating the findings/suggestions.
+- Provide some insight from the data in generated reports, so the user doesn't neet to go through multiple lines to find (for example) what are the most active hours in a day and what to do with such info in practice.
+  - This was achieved through adding an extra code that looks for a specific data, sorts the results and, later, constructs the line of text indicating the findings/suggestions.
 - The module runs in a smooth loop to allow the user without re-starting the application to keep exploring different reports and insights.
   - This was achieved by asking (validated) question whether the user would like to continue with another report or he wants to quit for now.
 
-The screen-max-width is set for 1100px to keep all the items in proportion. To keep all elements visually complete and related to each other, a light background was added that is always responsive to full screen size (not only up to 1100px).
 
 
 
@@ -100,6 +100,7 @@ For the color scheme, the idea was to keep clean-white texts with highlighting s
   - Descriptive highlight, Blue [\033[1;34m\], used in Welcome/Overview section to highlight available report types. 
   - Report highlight, Cyan [\033[1;36m\], used to draw attention to important elements in the analysis
   - Wrong input, Red [\033[1;31m\], for indicationg the Error in process where the user has to take another action. 
+  - Splash text, Green [\033[1;32m\], to create a wow effect. 
 
 
 
@@ -108,24 +109,14 @@ For the color scheme, the idea was to keep clean-white texts with highlighting s
 [Go to the top](#table-of-contents)
 
 
-<a name="sign-in"></a>
-## 2.1 Sign-in & task activation
+<a name="welcome"></a>
+## 2.1 Welcome & overview
 [Go to the top](#table-of-contents)
 
-To increase site's fun (gamification), several functions were used:
+This is the first page you see when the app loads. On this page there is a an explanation of the data collected and the choises the user has to make going further :
 
-1. Sign in with a name to be able to continue.  We use this name to welcome personally to the app. (In real life, I would use the name of app/user initial login instead of this place). 
-2. Countdown timer. It could be done between certain dates or for a set time, but I used random time between 2 & 10 minutes for the task completion. This is used lately to get a better understanding of users’ behaviour: do they answer faster under a pressure of the short timeframe or contrary, they just drop the app? This is also will be used to relate which tasks are picked-up first under time constraints.
-There is no penalty here if time expires since we still want user to do something, we just notify that allocated time has already expired. 
-3. Task activation. The task is not active (clickable) if the user name was not entered. After the submission, ‘click’ icons with a link appear on the task sections. 
-4. 'Breadcrumbs' on some internal pages with more related content (i.e. name of the task).
+![welcome-section](/images/feature-welcome.JPG) 
 
-
-DigitalZ logo from each page always returns a user to the home-page.
-
-![responsive home page](/assets/readme-assets/responsive-home450.webp) 
-![signed-in home page](/assets/readme-assets/home-page-signed-mobile.webp) 
-![expired-time home page](/assets/readme-assets/home-page-expired-mobile.webp) 
 
 
 <a name="tasks"></a>
