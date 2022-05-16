@@ -140,7 +140,7 @@ def another_report():
 
     if next_step in ['Y', 'y']:
         os.system("cls" if os.name == "nt" else "clear")
-        print("-".center(90, "-"))
+        print("-".center(78, "-"))
         print("\n\n")
         collect_input_data()
     else:
