@@ -34,10 +34,10 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
   - [2.1 Welcome & overview](#welcome)
   - [2.2 Report # input](#report-number)
   -	[2.3 Start-date input](#start-date-input)
-  - [2.4 End-date input & validation)](#end-date-input)
-  - [2.4 Data storage)](#data-storage)
-  - [2.4 Reports)](#future-features)
-  - [2.4 Continue cycle)](#future-features)
+  - [2.4 End-date input & validation](#end-date-input)
+  - [2.5 Data storage](#data-storage)
+  - [2.6 Reports](#reports)
+  - [2.7 Continue cycle](#another-report)
 
 
 [3.Technologies used](#technologies-used)
@@ -147,26 +147,57 @@ Finally, the user is asked to enter the end-date of the period he wants to analy
 ## 2.5 Data storage
 [Go to the top](#table-of-contents)
 
-After the user selects the report number, start and end-day of analysis, he is reminded the options he selected and 
+After the user selects the report number, start and end-day of analysis, he is reminded the options he selected, 
 
 ![selected-options-display](/images/selection-display.JPG) 
 
-the data is recorded in GoogleSheet file for later use:
+
+and the data is recorded in GoogleSheet file for later use:
 
 ![googlesheets-record](/images/data-googlesheet-capture.JPG)
 
 
 <a name="future-features"></a>
-## 2.5 Features-to-come (list is not complete)
-[Go to the top](#table-of-contents)
+## 2.6 Reports
+[Go to the top](#reports)
 
-Those features could be used to enhance user experience and collect more behavioral data in the future while integrating the Tasking Module into bigger solutions.
+Each of the reports in this module has different complexity, unique features, but follows the same structure:
 
-1.  Countdown timer for each task
-2.	Notifications on the certain % of time elapsed
-3.	Reward and status points included
-4.	More information about other participants’ responses 
-5.  Sharing: to allow user to share tasks with friends 
+1.  Retrieves the data from external file
+2.	Converts the data to separate elements and creates the string with specific start & end-time
+3.	Runs through a different number of loops to asign other elements to the date:
+      - *report1*: 1 loop through data:days and assigns users to the specific day. Then sorts all days:users in reverse order to find 2 days with max number of users
+      - *report2*: 2 loops though data:days & data:hours, and assigns the users to different hours. Then finds the hour with max users and recommends to dispatch tasks 3 before the peak.
+      - *report3*: 3 loops through data:days, area and task-type, and assigns users accordingly. Then creates dictionaries for summary of results by task-types
+4.	Visualizes data for easier comprehension with a key-note or an insight
+
+Here are some samples:
+
+### *Report 1*
+
+![report1](/images/report1-capture.JPG)
+
+--
+
+### *Report2*
+
+![report2](/images/report2-capture.JPG)
+
+-- 
+
+### *Report3* 
+
+![report3](/images/report3-capture.JPG)
+
+
+<a name="end-date-input"></a>
+## 2.7 Continue cycle
+[Go to the top](#another-report)
+
+Finally, the user is asked to enter Y if he wants to run a new report (differnt report or the same, just with another period). If he enters anything else that 'Y' or 'y', the cycle closes with a 'Farewell note' and a suggestion to Run Program again: 
+
+![run-again](/images/run-again-capture.JPG) 
+
 
 
 ------
