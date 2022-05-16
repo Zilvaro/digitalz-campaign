@@ -182,7 +182,7 @@ def make_reports():
 
         report1_values = sorted(report1.items(), key=lambda y: y[1],
                                 reverse=True)
-        print('\n \033[0;36m Most active days were \033[0;37mDecember',
+        print('\n\033[0;36mMost active days were \033[0;37mDecember',
               report1_values[0][0], 'with', report1_values[0][1],
               '\033[0;36mand \033[0;37mDecember', report1_values[1][0],
               'with', report1_values[1][1], '\033[0;36mparticipants\n\n')
