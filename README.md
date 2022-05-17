@@ -4,7 +4,7 @@
 # Welcome!
 
 
-This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2020 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day during December month and a specific focus was on the understanding of the users' behavior:
+This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2019 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day during December month and a specific focus was on the understanding of the users' behavior:
   - when, during the month users usally are the most active
   - when, during the day, they have the time available and willingness to respond to the tasks. That would indicate to the company when to dispach new tasks
   - is there a corelation between task-types, geographical areas and the response rate
@@ -40,16 +40,20 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
   - [2.7 Continue cycle](#another-report)
 
 
-[3.Technologies used](#technologies-used)
-  - [Languages Used](#languages-used)
-  - [Frameworks, Libraries and Programs Used](#programs-used)
+[3.Testing](#testing)
+  - [3.1 Visual testing](#visual-testing)
+  - [3.2 Input variation testing](#input-testing)
+  - [3.3 PIP3 testing](#pip-testing)
+
+
+[4.Fixes & improvements](#fixes-improvements)
+  - [4.1 Validation code](#validation-code)
+  - [4.2 Same-day error](#same-day)
+  - [4.3 Result visualization](#result-visualization)
   
 
-[4.Testing](#testing)
-  - [Flow Testing](#flow-testing)
-  - [Performance Testing](#performance-testing)
-
 [5. Deployment](#deployment)
+
 
 [6. Acknowledgement](#acknowledgement)
 
@@ -202,49 +206,48 @@ Finally, the user is asked to enter Y if he wants to run a new report (differnt 
 
 ------
 
-<a name="technologies-used"></a>
-# 3.Technologies Used
+<a name="testing"></a>
+# 3.Testing
 [Go to the top](#table-of-contents)
 
 
-<a name="languages-used"></a>
-## Languages Used
+<a name="visual-testing"></a>
+## 3.1 Visual testing
+[Go to the top](#table-of-contents)
 
-- HTML5 
+To ensure the code produces correct reports, it was important to validate data inputs and formulas. For that purpose it was created and used a small sub-set of the real data file:
 
-- CSS3 
+![smaller-data-sample](/images/smaller-sample.JPG) 
 
-- JavaScript
+At each step of coding, I was running a visual test to check:
+   - sets of number-values
+   - date and time values
+   - created variables, lists or dictionaries
+   - formulas and returned data
+   - typos
+   - all displayed elements are visible and clear
 
 
-<a name="programs-used"></a>
-## Frameworks, Libraries and Programs Used
+ALL visual checks have passed to the best visual ability of examinateur.
 
-- Balsamiq was used to create wireframes of the website (mobile-first and wide-screen versions).
 
-- Paint.net was used to resize some of the images used.
+<a name="report-number"></a>
+## 2.2 Report # input
+[Go to the top](#table-of-contents)
 
-- Font Awesome was used to import icons.
+First, user has to enter the number of the report to be executed. The valid numbers 1 to 3 are indicated and then the input is validated (validation sample is in section 2.4. "End-date input").
 
-- Am I Responsive was used to generate mock-up imagery for ReadMe file.
+![report-number-input](/images/enter-report-number.JPG)
 
-- Chrome was used to test the source code using HTML5 and responsiveness.
 
-- GitHub was used to create the repository and to store the project's code.
+<a name="start-date-input"></a>
+## 2.3 Start-date input
+[Go to the top](#table-of-contents)
 
-- Gitpod was used as the Code Editor for the site
+Then, the user is asked to enter the start-date of the period he wants to analyze. The valid input is any number between 1 & 31 (of December) (Date validation sample is in section 2.4. "End-date input")
 
-- ColorHex was used to select the color-palette for the website.
+![start-date](/images/enter-start-date.JPG) 
 
-- W3C Markup and Jigsaw validation tools were used to validate the HTML code and CSS style used in the project.
-
-- JSHints JavaScript Code Quality Tool was used to validate the site's JavaScript code.
-
-- Favicon-generator.org was used to create the site favicon.
-
-- Looka was used to generate the DigitalZ logo design.
-
-- Unsplash.com was used to choose the images for the website.
 
 
 
