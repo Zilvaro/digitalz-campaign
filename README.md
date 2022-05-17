@@ -42,8 +42,8 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 
 [3.Testing](#testing)
   - [3.1 Visual testing](#visual-testing)
-  - [3.2 Input variation testing](#input-testing)
-  - [3.3 PIP3 testing](#pip-testing)
+  - [3.2 Input vlidation testing](#input-testing)
+  - [3.3 PEP8 testing](#pep-testing)
 
 
 [4.Fixes & improvements](#fixes-improvements)
@@ -231,23 +231,42 @@ At each step of coding, I was running a visual test to check:
 ALL visual checks have passed to the best visual ability of examinateur.
 
 
-<a name="report-number"></a>
-## 2.2 Report # input
+<a name="input-testing"></a>
+## 2.2 Input validation testing
 [Go to the top](#table-of-contents)
 
-First, user has to enter the number of the report to be executed. The valid numbers 1 to 3 are indicated and then the input is validated (validation sample is in section 2.4. "End-date input").
+To ensure that code is robust against all user input types and accepts only required values, a list of input-validation tests were performed on each input:
 
-![report-number-input](/images/enter-report-number.JPG)
+  - outside instructed range
+  - negative number
+  - empty 'Enter' click
+  - letter/word 
+  - end-day before start-date
+  - same start-end dates
+  - same dates on both ends of the proposed period
+
+### *Example*:
+
+![input-validation-test](/images/input-validation-test.JPG)
 
 
-<a name="start-date-input"></a>
-## 2.3 Start-date input
+ALL tests PASSED.
+
+
+<a name="pep-testing"></a>
+## 2.3 PEP8 testing
 [Go to the top](#table-of-contents)
 
-Then, the user is asked to enter the start-date of the period he wants to analyze. The valid input is any number between 1 & 31 (of December) (Date validation sample is in section 2.4. "End-date input")
+Python was tested using PEP8 Python validator
 
-![start-date](/images/enter-start-date.JPG) 
+The Python results came back with the following:
 
+![pep8-initial](/images/problem-check-pep8-initial.JPG) 
+
+
+To fix the long lines, I split them into multiple shorter lines, eliminated some verbosity. Then, after cleaning some typos and spaces, the PEP8 result was OK:
+
+![pep8-fixed](/images/problem-check-pep8-improved.JPG)
 
 
 
