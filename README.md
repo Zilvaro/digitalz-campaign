@@ -49,7 +49,7 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 [4.Fixes & improvements](#fixes-improvements)
   - [4.1 Input validation bug](#validation-code)
   - [4.2 Same-day error](#same-day)
-  - [4.3 Result visualization](#result-visualization)
+  - [4.3 Result visualization improvement](#result-visualization)
   
 
 [5. Deployment](#deployment)
@@ -170,9 +170,9 @@ Each of the reports in this module has different complexity, unique features, bu
 1.  Retrieves the data from external file
 2.	Converts the data to separate elements and creates the string with specific start & end-time
 3.	Runs through a different number of loops to asign other elements to the date:
-      - *report1*: 1 loop through data:days and assigns users to the specific day. Then sorts all days:users in reverse order to find 2 days with max number of users
-      - *report2*: 2 loops though data:days & data:hours, and assigns the users to different hours. Then finds the hour with max users and recommends to dispatch tasks 3 before the peak.
-      - *report3*: 3 loops through data:days, area and task-type, and assigns users accordingly. Then creates dictionaries for summary of results by task-types
+      - *report1*: 1 loop through data:days and assigns users to the specific day. Then sorts all days:users in reverse order (using Lambda function) to find 2 days with max number of users
+      - *report2*: 2 loops though data:days & data:hours, and assigns the users to different hours. Then, finds the hour with max users and recommends to dispatch tasks 3 before the peak.
+      - *report3*: 3 loops through data:days, area and task-type, and assigns users accordingly. Then creates dictionaries for summary of results by task-types.
 4.	Visualizes data for easier comprehension with a key-note or an insight
 
 Here are some samples:
@@ -317,17 +317,45 @@ To fix the long lines, I split them into multiple shorter lines, eliminated some
 ![same-day-fixed](/images/same-day-fix.JPG)
 
 
+<a name="result-visualization"></a>
+## 4.3 Result visualization improvement
+[Go to the top](#table-of-contents)
+
+  **Issue:** In report3, if you enter the same start and end days, the code gives an error message & stops.
+
+  ![same-day-problem](/images/same-day-error.JPG) 
+
+  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added aditional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
+
+### *Code before:*
+
+![same-day-code-before](/images/same-day-code-error.JPG) 
+
+
+### *Code after:*
+
+![same-day-code-fixed](/images/same-day-code-fix.JPG)
+![same-day-fixed](/images/same-day-fix.JPG)
+
+
 
 <a name="deployment"></a>
 # 5.Deployment
 [Go to the top](#table-of-contents)
 
 The site was deployed to GitHub pages using the following steps:
-- Sign up to GitHub
-- Click on settings on the navigation bar under the repository title.
-- Select pages on the left menu bar.
-- Click on the master branch and save.
-- The live link created by Github - https://zilvaro.github.io/digitalz-research/
+
+1.	In Heroku account created the new app for the project
+2.	Set Vars, CREDS, buildpacks (Python and node.js)
+3.	In Gitpod workspace terminal:
+    - Logged in to Heroku: heroku login -i 
+    - Set the Heroku remote: heroku git:remote -a digitalz-research
+    - Added and committed changes: git add . && git commit -m " "
+    - Pushed to both GitHub and Heroku: 
+      -	git push 
+      -	git push heroku main
+
+The live link created by Heroku - https://digitalz-research.herokuapp.com/
 
 
 
@@ -336,10 +364,11 @@ The site was deployed to GitHub pages using the following steps:
 # 6.Acknowledgement
   [Go to the top](#table-of-contents)
 
-- For README.md file/Deployment section, reference of github.com/josswe26/rpsls was considered.
-- The code was created by developer with some theory and concepts explanations by W3C and HubSpot blog.
-- The texts were created by developer with pictures sourced from unsplash.com
-
+- Lucid chart -  was used to create the flow chart in the planning process for this project.
+- PEP8 validator - was used to check the code was valid.
+- docs.python.org, w3schools, HubSpot blog were used to clarify some theory and concepts.
+- Code Institute template was used as deployment terminal
+  
 * Thanks to my mentor Marcel Mulders for his constructive feedback and guidance.
 
 
