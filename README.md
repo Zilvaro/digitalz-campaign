@@ -47,7 +47,7 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 
 
 [4.Fixes & improvements](#fixes-improvements)
-  - [4.1 Validation code](#validation-code)
+  - [4.1 Input validation bug](#validation-code)
   - [4.2 Same-day error](#same-day)
   - [4.3 Result visualization](#result-visualization)
   
@@ -232,7 +232,7 @@ ALL visual checks have passed to the best visual ability of examinateur.
 
 
 <a name="input-testing"></a>
-## 2.2 Input validation testing
+## 3.2 Input validation testing
 [Go to the top](#table-of-contents)
 
 To ensure that code is robust against all user input types and accepts only required values, a list of input-validation tests were performed on each input:
@@ -254,7 +254,7 @@ ALL tests PASSED.
 
 
 <a name="pep-testing"></a>
-## 2.3 PEP8 testing
+## 3.3 PEP8 testing
 [Go to the top](#table-of-contents)
 
 Python was tested using PEP8 Python validator
@@ -270,68 +270,51 @@ To fix the long lines, I split them into multiple shorter lines, eliminated some
 
 
 
-<a name="testing"></a>
-# 4.Testing
+
+<a name="fixes-improvements"></a>
+# 4.Fixes & improvements
 [Go to the top](#table-of-contents)
 
-The W3C Markup Validator, W3C CSS Validator and JSHint were used to validate every page, links, and  JavaScript code of the project to ensure there were no syntax errors in the project.
 
-
-![W3C-html-validation](/assets/readme-assets/nu-html-checker500.jpg)
-![W3C-css-validation](/assets/readme-assets/W3C-CSS-validation500.jpg)
-![JShint-validation](/assets/readme-assets/jshint-test.JPG)
-
-<a name="flow-testing"></a>
-## Flow Testing
+<a name="validation-code"></a>
+## 4.1 Input validation bug
 [Go to the top](#table-of-contents)
 
-After every significant iteration, the code was tested using Chrome Developer tools and on several devices:
+  **Issue:** Input code works well with the 'numeric' input, even outside the given range, but stops if pressed 'Enter' or input are 'letters'.
 
-- Nokia8 mobile phone
-- Samsung S5e tablet
-- Dell XPS 13" wide (9x16) laptop 
-- Samsung 24" regular (10x16) screen monitor
+  ![validation-problem](/images/start-validation-initial.JPG) 
 
-Each of the pages were tested for 
-1. responsiveness + smooth change from vertical to horizontal layout
-2. all images and texts are clear, readable and are not distorted on different screens
-3. all links to other pages work 
-4. accessibility (clarity of the page and next steps)
-5. code executes what it supposes to
-6. the flow in general 
+  **Solution:** Using loop I created a specific list-of-strings for 'legal entries' and then assigned 'Invalid input. Repeat' to everything outside that list.
 
-ALL tests PASSED.
+### *Code before:*
+
+![validation-code-initial](/images/input-validation-code-initial.JPG) 
 
 
----
+### *Code after:*
 
-There were several bugs/issues with:
-
- - missing images and 404 error on the published website: issues related with wrong paths assignment fixed
- - responsive design including google-charts: fixed with CSS measurements and positioning manipulations
- - some functions were not executing as expected: problems fixed by changing global variables into local
+![validation-code-fixed](/images/input-validation-code-improved.JPG)
 
 
-
-<a name="performance-testing"></a>
-## Performance Testing
+<a name="same-day"></a>
+## 4.2 Same-day error
 [Go to the top](#table-of-contents)
 
-Chrome-Developer tools-Lighthouse was performed for all pages to evaluate Performance, Accessibility, Best Practices and SEO status. No major issues found.
+  **Issue:** In report1, if you enter the same start and end days, the code gives an error message & stops.
+
+  ![same-day-problem](/images/same-day-error.JPG) 
+
+  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added aditional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
+
+### *Code before:*
+
+![same-day-code-before](/images/same-day-code-error.JPG) 
 
 
-### Home page
-### Tasks
-[Go to the top](#table-of-contents)
+### *Code after:*
 
-![home-lighthouse-test](/assets/readme-assets/lighthouse-index500.jpg)
-![task-lighthouse-test](/assets/readme-assets/lighthouse-guinness-task500.jpg)
-
-### Charts
-[Go to the top](#table-of-contents)
-
-![guinness-chart-lighthouse-test](/assets/readme-assets/lighthouse-guinness-graph500.jpg)
-![vitamins-chart-lighthouse-test](/assets/readme-assets/lighthouse-vitamins-graph500.jpg)
+![same-day-code-fixed](/images/same-day-code-fix.JPG)
+![same-day-fixed](/images/same-day-fix.JPG)
 
 
 
