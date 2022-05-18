@@ -321,21 +321,21 @@ To fix the long lines, I split them into multiple shorter lines, eliminated some
 ## 4.3 Result visualization improvement
 [Go to the top](#table-of-contents)
 
-  **Issue:** In report3, if you enter the same start and end days, the code gives an error message & stops.
+  **Issue:** In report3, some report data was printing as a dictionary wit {} brackets, that was visually not attractive and somewhat difficult to read:
 
-  ![same-day-problem](/images/same-day-error.JPG) 
+  ![same-day-problem](/images/report-pprint-initial.JPG) 
 
-  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added additional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
+  **Solution:** The print code was changed to print results using 'area' key, that significantly improved the report's readability.
 
 ### *Code before:*
 
-![same-day-code-before](/images/same-day-code-error.JPG) 
+![same-day-code-before](/images/pprint-code-initial.JPG) 
 
 
 ### *Code after:*
 
-![same-day-code-fixed](/images/same-day-code-fix.JPG)
-![same-day-fixed](/images/same-day-fix.JPG)
+![same-day-code-fixed](/images/pprint-code-improved.JPG)
+![same-day-fixed](/images/report-pprint-improved.JPG)
 
 
 
