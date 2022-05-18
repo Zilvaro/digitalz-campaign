@@ -4,14 +4,14 @@
 # Welcome!
 
 
-This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2019 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day during December month and a specific focus was on the understanding of the users' behavior:
-  - when, during the month users usally are the most active
-  - when, during the day, they have the time available and willingness to respond to the tasks. That would indicate to the company when to dispach new tasks
-  - is there a corelation between task-types, geographical areas and the response rate
+This digitalz-campaign module is a real-life example of the data analysis of the Christmas marketing campaign. Thanks to Dkiru Ltd, who kindly provided de-personalized data of their 2019 December campaign with retailers who were remotely (via mobile app) asked to perform certain business, educational or market research driven tasks. The tasks were sent each day during December month and a specific focus was on the understanding of the users' behaviour:
+  - when, during the month users usually are the most active
+  - when, during the day, they have the time available and willingness to respond to the tasks. That would indicate to the company when to dispatch new tasks
+  - is there a corelation between task-types, geographical areas, and the response rate
 
 For more practical benefits to the user, each reports includes an actionable summary or insight sentence generated using the data.
 
-Since the solution uses external GoogleSheets location to store the data and capture inputs for analysis, it can be already used 'as-is' for the data sets, imported to excel, of other months as well as to produce other related reports with a minimal change in output parameters.
+Since the solution uses external Google Sheets location to store the data and capture inputs for analysis, it can be already used 'as-is' for the data sets, imported to excel, of other months as well as to produce other related reports with a minimal change in output parameters.
 
 
 The working version of the Campaign Reporting Module mobile-web pages can be found [here](https://git.heroku.com/digitalz-research.git).
@@ -27,7 +27,7 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 [1. General structure (flow)](#ux)
   - [1.1 Objectives](#objectives)
   - [1.2 Personas](#personas)
-  -	[1.3 Color Scheme](#color-scheme)
+  -	[1.3 Colour Scheme](#color-scheme)
 
       
 [2. Features](#features)
@@ -42,7 +42,7 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 
 [3.Testing](#testing)
   - [3.1 Visual testing](#visual-testing)
-  - [3.2 Input vlidation testing](#input-testing)
+  - [3.2 Input validation testing](#input-testing)
   - [3.3 PEP8 testing](#pep-testing)
 
 
@@ -72,12 +72,12 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 ## 1.1 Objectives
 [Go to the top](#table-of-contents)
 
-- Allow users to explore participants' answering behavior for for different time intervals during the promo-month. 
+- Allow users to explore participants' answering behavior for different time intervals during the promo-month. 
   - This was achieved via the selection of a report and setting the start & end-date of the analysis
-- Provide some insight from the data in generated reports, so the user doesn't neet to go through multiple lines to find (for example) what are the most active hours in a day and what to do with such info in practice.
+- Provide some insight from the data in generated reports, so the user doesn't need to go through multiple lines to find (for example) what are the most active hours in a day and what to do with such info in practice.
   - This was achieved through adding an extra code that looks for a specific data, sorts the results and, later, constructs the line of text indicating the findings/suggestions.
 - The module runs in a smooth loop to allow the user without re-starting the application to keep exploring different reports and insights.
-  - This was achieved by asking (validated) question whether the user would like to continue with another report or he wants to quit for now.
+  - This was achieved by asking (validated) question whether the user would like to continue with another report, or he wants to quit for now.
 
 
 
@@ -86,21 +86,21 @@ The working version of the Campaign Reporting Module mobile-web pages can be fou
 ## 1.2 Users
 [Go to the top](#table-of-contents)
 
-**Emily** : 24 years old marketing executive responsable for the remote sales and marketing campaign. One of her objectives is to maximize the active participation of the program users and collect significant information for brand managers.
+**Emily** : 24 years old marketing executive responsible for the remote sales and marketing campaign. One of her objectives is to maximize the active participation of the program users and collect significant information for brand managers.
 
 **Grace** : 39 years old Sales Strategy director who is overseeing marketing spend and wants to push sales via business tasks, but at the same maintain program fun and interesting to the retail with mixing-in the educational tasks.
 
 
 <a name="color-scheme"></a>
-## 1.3 Color Scheme
+## 1.3 Colour Scheme
 [Go to the top](#table-of-contents)
 
-For the color scheme, the idea was to keep clean-white texts with highlighting some important points and drawing attention to errors or wrong inputs.
+For the colour scheme, the idea was to keep clean-white texts with highlighting some important points and drawing attention to errors or wrong inputs.
 
   - General text, White-normal [\033[0;37m\]. 
   - Descriptive highlight, Blue [\033[1;34m\], used in Welcome/Overview section to highlight available report types. 
   - Report highlight, Cyan [\033[1;36m\], used to draw attention to important elements in the analysis
-  - Wrong input, Red [\033[1;31m\], for indicationg the Error in process where the user has to take another action. 
+  - Wrong input, Red [\033[1;31m\], for indicating the Error in process where the user has to take another action. 
   - Splash text, Green [\033[1;32m\], to create a wow effect. 
 
 
@@ -114,7 +114,7 @@ For the color scheme, the idea was to keep clean-white texts with highlighting s
 ## 2.1 Welcome & overview
 [Go to the top](#table-of-contents)
 
-This is the first page you see when the app loads. On this page there is a an explanation of the data collected and the choises the user has to make going further :
+This is the first page you see when the app loads. On this page there is a an explanation of the data collected and the choices the user has to make going further:
 
 ![welcome-section](/images/feature-welcome.JPG) 
 
@@ -124,7 +124,7 @@ This is the first page you see when the app loads. On this page there is a an ex
 ## 2.2 Report # input
 [Go to the top](#table-of-contents)
 
-First, user has to enter the number of the report to be executed. The valid numbers 1 to 3 are indicated and then the input is validated (validation sample is in section 2.4. "End-date input").
+First, user must enter the number of the report to be executed. The valid numbers 1 to 3 are indicated and then the input is validated (validation sample is in section 2.4. "End-date input").
 
 ![report-number-input](/images/enter-report-number.JPG)
 
@@ -133,7 +133,7 @@ First, user has to enter the number of the report to be executed. The valid numb
 ## 2.3 Start-date input
 [Go to the top](#table-of-contents)
 
-Then, the user is asked to enter the start-date of the period he wants to analyze. The valid input is any number between 1 & 31 (of December) (Date validation sample is in section 2.4. "End-date input")
+Then, the user is asked to enter the start-date of the period he wants to analyse. The valid input is any number between 1 & 31 (of December) (Date validation sample is in section 2.4. "End-date input")
 
 ![start-date](/images/enter-start-date.JPG) 
 
@@ -142,7 +142,7 @@ Then, the user is asked to enter the start-date of the period he wants to analyz
 ## 2.4 End-date input & validation
 [Go to the top](#table-of-contents)
 
-Finally, the user is asked to enter the end-date of the period he wants to analyze. The valid input already includes the seleted starting date and eliminates the possibility to select the end-day smaller than starting date. 
+Finally, the user is asked to enter the end-date of the period he wants to analyse. The valid input already includes the selected starting date and eliminates the possibility to select the end-day smaller than starting date. 
 
 ![end-date](/images/enter-end-date.JPG) 
 
@@ -156,7 +156,7 @@ After the user selects the report number, start and end-day of analysis, he is r
 ![selected-options-display](/images/selection-display.JPG) 
 
 
-and the data is recorded in GoogleSheet file for later use:
+and the data is recorded in Google Sheet file for later use:
 
 ![googlesheets-record](/images/data-googlesheet-capture.JPG)
 
@@ -169,7 +169,7 @@ Each of the reports in this module has different complexity, unique features, bu
 
 1.  Retrieves the data from external file
 2.	Converts the data to separate elements and creates the string with specific start & end-time
-3.	Runs through a different number of loops to asign other elements to the date:
+3.	Runs through a different number of loops to assign other elements to the date:
       - *report1*: 1 loop through data:days and assigns users to the specific day. Then sorts all days:users in reverse order (using Lambda function) to find 2 days with max number of users
       - *report2*: 2 loops though data:days & data:hours, and assigns the users to different hours. Then, finds the hour with max users and recommends to dispatch tasks 3 before the peak.
       - *report3*: 3 loops through data:days, area and task-type, and assigns users accordingly. Then creates dictionaries for summary of results by task-types.
@@ -198,7 +198,7 @@ Here are some samples:
 ## 2.7 Continue cycle
 [Go to the top](#another-report)
 
-Finally, the user is asked to enter Y if he wants to run a new report (differnt report or the same, just with another period). If he enters anything else that 'Y' or 'y', the cycle closes with a 'Farewell note' and a suggestion to Run Program again: 
+Finally, the user is asked to enter Y if he wants to run a new report (different report or the same, just with another period). If he enters anything else that 'Y' or 'y', the cycle closes with a 'Farewell note' and a suggestion to Run Program again: 
 
 ![run-again](/images/run-again-capture.JPG) 
 
@@ -235,7 +235,7 @@ ALL visual checks have passed to the best visual ability of examinateur.
 ## 3.2 Input validation testing
 [Go to the top](#table-of-contents)
 
-To ensure that code is robust against all user input types and accepts only required values, a list of input-validation tests were performed on each input:
+To ensure that code is robust against all user input types and accepts only required values, a list of input-validation tests was performed on each input:
 
   - outside instructed range
   - negative number
@@ -304,7 +304,7 @@ To fix the long lines, I split them into multiple shorter lines, eliminated some
 
   ![same-day-problem](/images/same-day-error.JPG) 
 
-  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added aditional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
+  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added additional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
 
 ### *Code before:*
 
@@ -325,7 +325,7 @@ To fix the long lines, I split them into multiple shorter lines, eliminated some
 
   ![same-day-problem](/images/same-day-error.JPG) 
 
-  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added aditional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
+  **Solution:** The problem was that in the print() statement the code looks for 2 max-values in the result-string, but there is only one value (of 1 selected day). I added additional checking if there is one or more days in the result-string and then coded 2 print() statements accordingly.
 
 ### *Code before:*
 
