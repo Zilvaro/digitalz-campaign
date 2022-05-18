@@ -240,7 +240,8 @@ To ensure that code is robust against all user input types and accepts only requ
   - outside instructed range
   - negative number
   - empty 'Enter' click
-  - letter/word 
+  - letter/word
+  - empty spaces before correct number 
   - end-day before start-date
   - same start-end dates
   - same dates on both ends of the proposed period

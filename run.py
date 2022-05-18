@@ -75,7 +75,7 @@ def collect_input_data():
     user_input = SHEET.worksheet('data-input')
 
     # Input, check the report number and update google sheet
-    report_number = input("Enter the report number here (1 to 3): \n")
+    report_number = input("Enter the report number here (1 to 3): \n").strip()
     while report_number not in ['1', '2', '3']:
         report_number = input(
             "\n\033[1;31mInvalid input, Please type a number "
@@ -91,7 +91,7 @@ def collect_input_data():
     start_range_int = list(range(1, 32))
     start_string = [str(x) for x in start_range_int]
 
-    start_date = input("\nEnter the NUMBER of start-day (1 to 31): \n")
+    start_date = input("\nEnter the NUMBER of start-day (1 to 31): \n").strip()
     while start_date not in start_string:
         start_date = input(
             "\n\033[1;31mInvalid input, Please type a number "
@@ -105,6 +105,7 @@ def collect_input_data():
         end_string.append(str(element))
 
     end_date = input(f'\nEnter the NUMBER of end-day ({start_date} to 31):\n')
+    end_date = end_date.strip()
     while end_date not in end_string:
         print("\n\033[1;31mInvalid input. Enter a number between:")
         end_date = input(f"\033[0;37m{start_date} and 31\n")
@@ -136,6 +137,7 @@ def another_report():
 
     print('\033[0;37m')
     next_step = input("Another report? Press \033[4;32mY\033[0;37m :  \n")
+    next_step = next_step.strip()
     print('\n\n')
 
     if next_step in ['Y', 'y']:
