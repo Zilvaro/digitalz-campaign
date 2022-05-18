@@ -1,5 +1,5 @@
 """ All imports. """
-
+# These are external libraries and libraries from Python3
 import os
 from datetime import datetime
 from google.oauth2.service_account import Credentials
